@@ -64,13 +64,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:backgroundTint="#802C7BA6"
             android:layout_marginEnd="16dp"
-            android:hint="Password"
+            android:backgroundTint="#802C7BA6"
             android:ems="10"
+            android:hint="Password"
+            android:inputType="textPassword"
             android:textColorHint="#B32198B6"
             android:textSize="20sp"
-            android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/emailAddress" />
@@ -79,7 +79,7 @@
             android:id="@+id/loginBtn"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="20dp"
             android:background="#FFCBCB"
             android:text="Login"
             android:textColor="#FFFFFF"
@@ -93,7 +93,7 @@
             android:id="@+id/goToRegister"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:text="New User? Register Here!"
             android:textColor="#3043AA"
             android:textSize="20sp"
@@ -105,26 +105,24 @@
             android:id="@+id/forgotPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="Forgot Password?"
             android:textColor="#3043AA"
             android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/goToRegister" />
+            app:layout_constraintTop_toBottomOf="@+id/password" />
 
         <ProgressBar
             android:id="@+id/signupProgressBar"
             style="?android:attr/progressBarStyle"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="23dp"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.476"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/password" />
+            app:layout_constraintTop_toBottomOf="@+id/forgotPassword" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
