@@ -151,7 +151,7 @@
             android:layout_marginTop="16dp"
             android:text="Already registered? Login Here!"
             android:textColor="#3043AA"
-            android:textSize="22sp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
