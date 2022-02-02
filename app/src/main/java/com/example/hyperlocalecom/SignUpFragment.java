@@ -1,6 +1,7 @@
 package com.example.hyperlocalecom;
 
-import android.app.Activity;
+import static android.content.ContentValues.TAG;
+
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -12,6 +13,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,11 +26,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -43,6 +51,7 @@ public class SignUpFragment extends Fragment {
     ProgressBar pbar;
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore firebaseFireStore;
+    String userID;
 
 
     private String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+.[a-z]+";
@@ -99,19 +108,20 @@ public class SignUpFragment extends Fragment {
         parentFrameLayout = getActivity().findViewById(R.id.registerFrameLayout);
 
 
-        mfullName = view.findViewById(R.id.name);
-        mphoneNo = view.findViewById(R.id.phone);
-        memailId = view.findViewById(R.id.emailId);
-        mpassword = view.findViewById(R.id.password);
-        maddress = view.findViewById(R.id.address);
+        mfullName = view.findViewById(R.id.sign_up_name);
+        mphoneNo = view.findViewById(R.id.sign_up_phone);
+        memailId = view.findViewById(R.id.sign_up_emailId);
+        mpassword = view.findViewById(R.id.sign_up_password);
+        maddress = view.findViewById(R.id.sign_up_address);
 
         mregisterBtn = view.findViewById(R.id.registerBtn);
-        closebtn = view.findViewById(R.id.closeButton);
+        closebtn = view.findViewById(R.id.sign_up_closeButton);
 
-        pbar = view.findViewById(R.id.signupProgressBar);
+        pbar = view.findViewById(R.id.sign_up_ProgressBar);
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFireStore = FirebaseFirestore.getInstance();
+
 
         return view;
     }
@@ -127,6 +137,14 @@ public class SignUpFragment extends Fragment {
             }
 
 
+        });
+
+        closebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mainIntent();
+
+            }
         });
 
 
@@ -296,8 +314,29 @@ public class SignUpFragment extends Fragment {
                         // getActivity().finish();
 
                        */
-                        Intent intent = new Intent(getActivity(), MainActivity.class);
-                        getActivity().startActivity(intent);
+                       // Toast.makeText(SignUpFragment.this, "User created", Toast.LENGTH_SHORT).show();
+                        userID = firebaseAuth.getCurrentUser().getUid();
+                        DocumentReference documentReference = firebaseFireStore.collection("users").document(userID);
+                        Map<String,Object> user = new HashMap<>();
+                        user.put("fName",mfullName.getText().toString());
+                        user.put("email",memailId.getText().toString());
+                        user.put("phone",mphoneNo.getText().toString());
+                        user.put("address",maddress.getText().toString());
+                        documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Log.d(TAG, "onSuccess: user Profile is created for "+ userID);
+
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.d(TAG, "onFailure: " + e.toString());
+                                mainIntent();
+                            }
+                        });
+
+
 
                     }else{
                         mregisterBtn.setEnabled(true);
@@ -316,6 +355,13 @@ public class SignUpFragment extends Fragment {
             memailId.setError("Invalid Email!");
 
         }
+
+        }
+
+        private void mainIntent(){
+            Intent intent = new Intent(getActivity(), MainActivity.class);
+            getActivity().startActivity(intent);
+            getActivity().finish();
 
         }
 }

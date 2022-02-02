@@ -13,7 +13,7 @@
         android:layout_height="match_parent">
 
         <ImageButton
-            android:id="@+id/closeButton"
+            android:id="@+id/sign_in_closeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#00FFFFFF"
@@ -23,7 +23,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/createAccountTextView"
+            android:id="@+id/loginTextView"
             android:layout_width="wrap_content"
             android:layout_height="63dp"
 
@@ -41,7 +41,7 @@
             app:layout_constraintVertical_bias="0.161" />
 
         <EditText
-            android:id="@+id/emailId"
+            android:id="@+id/sign_in_emailId"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -56,10 +56,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/createAccountTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/loginTextView" />
 
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/sign_in_password"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -73,7 +73,7 @@
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/emailId" />
+            app:layout_constraintTop_toBottomOf="@+id/sign_in_emailId" />
 
         <Button
             android:id="@+id/loginBtn"
@@ -84,10 +84,11 @@
             android:text="Login"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
+            android:enabled="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/signupProgressBar" />
+            app:layout_constraintTop_toBottomOf="@+id/sign_in_ProgressBar" />
 
         <TextView
             android:id="@+id/goToRegister"
@@ -111,10 +112,10 @@
             android:textColor="#3043AA"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/password" />
+            app:layout_constraintTop_toBottomOf="@+id/sign_in_password" />
 
         <ProgressBar
-            android:id="@+id/signupProgressBar"
+            android:id="@+id/sign_in_ProgressBar"
             style="?android:attr/progressBarStyle"
             android:layout_width="35dp"
             android:layout_height="35dp"
