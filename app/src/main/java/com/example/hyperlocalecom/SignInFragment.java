@@ -1,5 +1,7 @@
 package com.example.hyperlocalecom;
 
+import static com.example.hyperlocalecom.RegisterActivity.onResetPasswordFragment;
+
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -118,6 +120,7 @@ public class SignInFragment extends Fragment {
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                onResetPasswordFragment = true;
                 setFragment(new ResetPasswordFragment());
             }
         });

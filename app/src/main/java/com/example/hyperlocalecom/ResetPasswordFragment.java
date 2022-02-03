@@ -10,12 +10,15 @@ import androidx.fragment.app.FragmentTransaction;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +42,11 @@ public class ResetPasswordFragment extends Fragment {
     private Button resetPasswordBtn;
     private TextView goBAck;
     private FrameLayout parentFrameLayout;
+    private  ViewGroup emailIconContainer;
+    private ImageView emailIcon;
+    private  TextView emailIconText;
+    private ProgressBar pbar;
+
     private FirebaseAuth firebaseAuth;
 
     // TODO: Rename and change types of parameters
@@ -86,6 +94,11 @@ public class ResetPasswordFragment extends Fragment {
        goBAck = view.findViewById(R.id.reset_password_go_back);
 
        parentFrameLayout = getActivity().findViewById(R.id.registerFrameLayout);
+       emailIconContainer = view.findViewById(R.id.forgot_password_email_container);
+       emailIcon = view.findViewById(R.id.forgot_password_email_icon);
+       emailIconText = view.findViewById(R.id.forgot_password_email_icon_text);
+       pbar = view.findViewById(R.id.forgot_password_progress_bar);
+
        firebaseAuth = FirebaseAuth.getInstance();
        return view;
     }
@@ -117,22 +130,38 @@ public class ResetPasswordFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+                TransitionManager.beginDelayedTransition(emailIconContainer);
+                emailIconText.setVisibility(View.GONE);
+
+                TransitionManager.beginDelayedTransition(emailIconContainer);
+                emailIcon.setVisibility(View.VISIBLE);
+
+                pbar.setVisibility(View.VISIBLE);
+
                 resetPasswordBtn.setEnabled(false);
 
                 firebaseAuth.sendPasswordResetEmail(registeredEmail.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
+                            emailIconText.setVisibility(View.VISIBLE);
                             Toast.makeText(getActivity(), "Email sent successfully!", Toast.LENGTH_SHORT).show();
 
                         }else{
                             String error = task.getException().getMessage();
-                            Toast.makeText(getActivity(), error, Toast.LENGTH_SHORT).show();
 
+                            resetPasswordBtn.setEnabled(true);
+                            pbar.setVisibility(View.GONE);
+
+                            emailIconText.setText(error);
+                            TransitionManager.beginDelayedTransition(emailIconContainer);
+                            emailIconText.setVisibility(View.VISIBLE);
 
                         }
 
-                        resetPasswordBtn.setEnabled(true);
+                        pbar.setVisibility(View.GONE);
+
+
 
                     }
                 });

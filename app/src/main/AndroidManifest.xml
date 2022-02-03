@@ -17,9 +17,11 @@
             android:exported="false" />
         <activity
             android:name=".RegisterActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".SplashActivity"
+            android:screenOrientation="portrait"
             android:exported="true"
             android:theme="@style/SplashTheme">
             <intent-filter>
