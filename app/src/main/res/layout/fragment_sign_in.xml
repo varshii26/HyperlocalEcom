@@ -20,7 +20,8 @@
             android:padding="16dp"
             android:src="@mipmap/close_cross"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <TextView
             android:id="@+id/loginTextView"
@@ -103,7 +104,7 @@
             app:layout_constraintTop_toBottomOf="@+id/loginBtn" />
 
         <TextView
-            android:id="@+id/forgotPassword"
+            android:id="@+id/sign_in_forgot_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -123,7 +124,7 @@
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/forgotPassword" />
+            app:layout_constraintTop_toBottomOf="@+id/sign_in_forgot_password" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -45,6 +45,7 @@ public class SignInFragment extends Fragment {
     private ImageButton closeBtn;
     private Button loginBtn;
     private FirebaseAuth firebaseAuth ;
+    private TextView forgotPassword;
     private String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+.[a-z]+";
     private ProgressBar pbar;
 
@@ -98,6 +99,7 @@ public class SignInFragment extends Fragment {
         loginBtn = view.findViewById(R.id.loginBtn);
         firebaseAuth = FirebaseAuth.getInstance();
         pbar = view.findViewById(R.id.sign_in_ProgressBar);
+        forgotPassword = view.findViewById(R.id.sign_in_forgot_password);
         return view;
     }
 
@@ -110,6 +112,13 @@ public class SignInFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 setFragment(new SignUpFragment());
+            }
+        });
+
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setFragment(new ResetPasswordFragment());
             }
         });
 
@@ -131,7 +140,7 @@ public class SignInFragment extends Fragment {
 
             }
         });
-        password.addTextChangedListener(new TextWatcher() {
+    /*    password.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -139,7 +148,6 @@ public class SignInFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
                 checkInputs();
 
             }
@@ -150,6 +158,7 @@ public class SignInFragment extends Fragment {
             }
         });
 
+     */
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -2,6 +2,7 @@ package com.example.hyperlocalecom;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -20,12 +21,12 @@ public class SplashActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-        SystemClock.sleep(3000);
-        Intent loginIntent = new Intent(SplashActivity.this,RegisterActivity.class);
-        startActivity(loginIntent);
-        finish();
+        SystemClock.sleep(1500);
 
     }
+
+
+
     @Override
     protected void onStart(){
         super.onStart();
@@ -42,4 +43,7 @@ public class SplashActivity extends AppCompatActivity {
         }
 
     }
+
+
+
 }
