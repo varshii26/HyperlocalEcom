@@ -41,6 +41,8 @@ import javax.annotation.Nullable;
 
 public class MainActivity extends AppCompatActivity {
 
+    //todo
+
     /*private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
 
