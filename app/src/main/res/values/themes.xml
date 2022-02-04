@@ -47,4 +47,13 @@
         </item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Theme.HyperlocalEcom.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.HyperlocalEcom.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.HyperlocalEcom.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
