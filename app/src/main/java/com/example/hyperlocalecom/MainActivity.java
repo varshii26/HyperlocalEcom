@@ -41,7 +41,7 @@ import javax.annotation.Nullable;
 
 public class MainActivity extends AppCompatActivity {
 
-    /*private AppBarConfiguration mAppBarConfiguration;
+    private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
 
     @Override
@@ -84,9 +84,9 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
-    }*/
+    }
 
-    private static final int GALLERY_INTENT_CODE = 1023 ;
+    /*private static final int GALLERY_INTENT_CODE = 1023 ;
     TextView fullName,email,phone,verifyMsg;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
@@ -215,5 +215,5 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-
+*/
 }

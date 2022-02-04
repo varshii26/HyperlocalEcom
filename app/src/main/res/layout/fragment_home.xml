@@ -12,9 +12,9 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="186dp">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <include layout=""
+        <include layout="@layout/horizontal_scroll_item_layout" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
